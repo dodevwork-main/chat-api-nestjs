@@ -1,6 +1,6 @@
 {
-  "name": "chat-back-nestjs",
-  "version": "0.0.1",
+  "name": "chat-api-nestjs",
+  "version": "0.0.0",
   "description": "",
   "author": "",
   "private": true,
