@@ -1,7 +1,7 @@
 import { MigrationInterface, QueryRunner } from 'typeorm'
 
-export class CreateUserTable1697226589874 implements MigrationInterface {
-  name = 'CreateUserTable1697226589874'
+export class CreateUserTable1697296577352 implements MigrationInterface {
+  name = 'CreateUserTable1697296577352'
 
   public async up(queryRunner: QueryRunner): Promise<void> {
     await queryRunner.query(`CREATE TABLE "user"
@@ -16,13 +16,13 @@ export class CreateUserTable1697226589874 implements MigrationInterface {
                                  "createdAt" TIMESTAMP WITH TIME ZONE NOT NULL DEFAULT now(),
                                  "deletedAt" TIMESTAMP WITH TIME ZONE,
                                  "updatedAt" TIMESTAMP WITH TIME ZONE NOT NULL DEFAULT now(),
-                                 CONSTRAINT "UQ_415c35b9b3b6fe45a3b065030f5" UNIQUE ("email"),
-                                 CONSTRAINT "UQ_9b998bada7cff93fcb953b0c37e" UNIQUE ("username"),
-                                 CONSTRAINT "PK_b54f8ea623b17094db7667d8206" PRIMARY KEY ("id")
+                                 CONSTRAINT "UQ_e12875dfb3b1d92d7d7c5377e22" UNIQUE ("email"),
+                                 CONSTRAINT "UQ_78a916df40e02a9deb1c4b75edb" UNIQUE ("username"),
+                                 CONSTRAINT "PK_cace4a159ff9f2512dd42373760" PRIMARY KEY ("id")
                              )`)
   }
 
   public async down(queryRunner: QueryRunner): Promise<void> {
-    await queryRunner.query(`DROP TABLE "user_entity"`)
+    await queryRunner.query(`DROP TABLE "user"`)
   }
 }
