@@ -11,7 +11,7 @@ export class UserRepository implements IUserRepository {
     private userRepository: Repository<UserEntity>,
   ) {}
 
-  getList(): Promise<UserEntity[]> {
+  getAll(): Promise<UserEntity[]> {
     return this.userRepository.find()
   }
 }

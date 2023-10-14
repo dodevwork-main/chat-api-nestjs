@@ -1,6 +1,6 @@
 import { Inject, Injectable } from '@nestjs/common'
 import { IUserRepository } from '@/domain/repositories'
-import { mapUser, UserResponseDto } from '@/domain/user/user-response.dto'
+import { mapUser, UserResponseDto } from './dto'
 
 @Injectable()
 export class UserService {
@@ -9,7 +9,7 @@ export class UserService {
   ) {}
 
   async getAll(): Promise<UserResponseDto[]> {
-    const users = await this.userRepository.getList()
+    const users = await this.userRepository.getAll()
     return users.map(mapUser)
   }
 }

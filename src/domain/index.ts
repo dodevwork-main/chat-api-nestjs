@@ -1,3 +1,5 @@
 export * from './domain.module'
-export * from './user'
 export * from './repositories'
+export * from './user'
+export * from './chat'
+export * from './message'

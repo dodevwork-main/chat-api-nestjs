@@ -6,8 +6,10 @@ import {
   Provider,
 } from '@nestjs/common'
 import { UserService } from '@/domain/user'
+import { ChatService } from '@/domain/chat'
+import { MessageService } from '@/domain/message'
 
-const providers: Provider[] = [UserService]
+const providers: Provider[] = [UserService, ChatService, MessageService]
 
 @Global()
 @Module({})

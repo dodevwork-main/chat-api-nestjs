@@ -1,8 +1,7 @@
 import { Controller, Get } from '@nestjs/common'
-import { UserService } from '@/domain/user/user.service'
-import { UserResponseDto } from '@/domain/user'
+import { UserResponseDto, UserService } from '@/domain'
 
-@Controller()
+@Controller('users')
 export class UserController {
   constructor(private service: UserService) {}
 
