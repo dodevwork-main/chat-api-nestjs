@@ -2,10 +2,13 @@ import {
   Column,
   CreateDateColumn,
   DeleteDateColumn,
-  Entity,
+  Entity, JoinTable, ManyToMany,
+  OneToMany,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm'
+import { MessageEntity } from './message.entity'
+import { ChatEntity } from './chat.entity'
 
 @Entity('user')
 export class UserEntity {
@@ -38,4 +41,10 @@ export class UserEntity {
 
   @UpdateDateColumn({ type: 'timestamptz' })
   updatedAt!: Date
+
+  @OneToMany(() => MessageEntity, (message) => message.user)
+  messages!: MessageEntity[]
+
+  @ManyToMany(() => ChatEntity, (chat) => chat.users)
+  chats!: ChatEntity[]
 }
