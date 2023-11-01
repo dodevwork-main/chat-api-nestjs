@@ -14,4 +14,16 @@ export class UserRepository implements IUserRepository {
   getAll(): Promise<UserEntity[]> {
     return this.userRepository.find()
   }
+
+  getById(id: string): Promise<UserEntity | null> {
+    return this.userRepository.findOneBy({ id })
+  }
+
+  getByUsername(username: string): Promise<UserEntity | null> {
+    return this.userRepository.findOneBy({ username })
+  }
+
+  create(user: Partial<UserEntity>): Promise<UserEntity> {
+    return this.userRepository.save(user)
+  }
 }
