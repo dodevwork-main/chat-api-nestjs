@@ -2,7 +2,8 @@ import {
   Column,
   CreateDateColumn,
   DeleteDateColumn,
-  Entity, JoinTable, ManyToMany,
+  Entity,
+  ManyToMany,
   OneToMany,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
@@ -16,13 +17,13 @@ export class UserEntity {
   id!: string
 
   @Column({ unique: true })
-  email!: string
-
-  @Column({ unique: true })
   username!: string
 
-  @Column({ default: '', select: false })
-  password?: string
+  @Column({ select: false })
+  password!: string
+
+  @Column({ default: '' })
+  email!: string
 
   @Column({ default: false })
   isAdmin!: boolean

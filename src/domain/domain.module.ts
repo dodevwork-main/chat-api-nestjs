@@ -8,8 +8,14 @@ import {
 import { UserService } from '@/domain/user'
 import { ChatService } from '@/domain/chat'
 import { MessageService } from '@/domain/message'
+import { AuthService } from '@/domain/auth'
 
-const providers: Provider[] = [UserService, ChatService, MessageService]
+const providers: Provider[] = [
+  UserService,
+  ChatService,
+  MessageService,
+  AuthService,
+]
 
 @Global()
 @Module({})
