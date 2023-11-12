@@ -19,8 +19,19 @@ export class UserRepository implements IUserRepository {
     return this.userRepository.findOneBy({ id })
   }
 
-  getByUsername(username: string): Promise<UserEntity | null> {
-    return this.userRepository.findOneBy({ username })
+  getByUsername(
+    username: string,
+    withPassword?: boolean,
+  ): Promise<UserEntity | null> {
+    let builder = this.userRepository
+      .createQueryBuilder('user')
+      .where({ username })
+
+    if (withPassword) {
+      builder = builder.addSelect('user.password')
+    }
+
+    return builder.getOne()
   }
 
   create(user: Partial<UserEntity>): Promise<UserEntity> {
