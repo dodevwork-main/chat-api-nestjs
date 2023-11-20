@@ -1,7 +1,8 @@
 import { IMessageRepository } from '@/domain'
 import { InjectRepository } from '@nestjs/typeorm'
 import { MessageEntity } from '../entities'
-import { Repository } from 'typeorm'
+import { FindOneOptions, Repository } from 'typeorm'
+import { FindManyOptions } from 'typeorm/find-options/FindManyOptions'
 
 export class MessageRepository implements IMessageRepository {
   constructor(
@@ -9,7 +10,17 @@ export class MessageRepository implements IMessageRepository {
     private messageRepository: Repository<MessageEntity>,
   ) {}
 
-  getList(): Promise<MessageEntity[]> {
-    return this.messageRepository.find()
+  getList(options?: FindManyOptions<MessageEntity>): Promise<MessageEntity[]> {
+    return this.messageRepository.find(options)
+  }
+
+  getByOne(
+    options: FindOneOptions<MessageEntity>,
+  ): Promise<MessageEntity | null> {
+    return this.messageRepository.findOne(options)
+  }
+
+  create(entity: Partial<MessageEntity>): Promise<MessageEntity> {
+    return this.messageRepository.save(entity)
   }
 }

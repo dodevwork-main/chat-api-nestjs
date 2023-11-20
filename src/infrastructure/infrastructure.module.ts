@@ -4,12 +4,14 @@ import { databaseConfig } from './database.config'
 import { databaseEntities } from './entities'
 import {
   IChatRepository,
+  ICommunicationRepository,
   ICryptoRepository,
   IMessageRepository,
   IUserRepository,
 } from '@/domain'
 import {
   ChatRepository,
+  CommunicationRepository,
   CryptoRepository,
   MessageRepository,
   UserRepository,
@@ -20,6 +22,7 @@ const providers: Provider[] = [
   { provide: IMessageRepository, useClass: MessageRepository },
   { provide: IChatRepository, useClass: ChatRepository },
   { provide: ICryptoRepository, useClass: CryptoRepository },
+  { provide: ICommunicationRepository, useClass: CommunicationRepository },
 ]
 
 const imports = [
