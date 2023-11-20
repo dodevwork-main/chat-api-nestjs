@@ -1,2 +1,3 @@
 export * from './create-chat.dto'
-export * from './chat-response.dto'
+export * from './new-message.dto'
+export * from './list-messages.dto'

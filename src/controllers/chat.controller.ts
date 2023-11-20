@@ -1,4 +1,4 @@
-import { Controller, Get } from '@nestjs/common'
+import { Controller, Get, Param } from '@nestjs/common'
 import { ChatResponseDto, ChatService } from '@/domain'
 import { AuthRoute } from '../app.guard'
 
@@ -10,5 +10,10 @@ export class ChatController {
   @Get()
   getAllChats(): Promise<ChatResponseDto[]> {
     return this.service.getAll()
+  }
+
+  @Get(':slug')
+  getOneBySlug(@Param('slug') slug: string): Promise<ChatResponseDto | null> {
+    return this.service.getOneBySlug(slug)
   }
 }
